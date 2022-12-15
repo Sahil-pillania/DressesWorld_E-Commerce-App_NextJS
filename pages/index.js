@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import img from "../public/image5.png";
 
 export default function Home() {
   return (
@@ -12,22 +13,17 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className="bg-red-600">Tailwind initialized</h1>
+        <div>
+          <Image
+            src={img}
+            className="shadow-md"
+            priority="high"
+            alt="homeimage"
+            width={1200}
+            height="auto"
+          />
+        </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className="mx-2 font-bold">
-            {/* <Image src="" alt="Dresses World" width={72} height={16} /> */}
-            Dresses World
-          </span>
-        </a>
-      </footer>
     </div>
   );
 }
