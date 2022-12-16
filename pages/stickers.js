@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const Mugs = () => {
+const stickers = () => {
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -16,7 +16,7 @@ const Mugs = () => {
                   <img
                     alt="ecommerce"
                     className="object-cover object-top m-auto md:m-0 md:w-full h-[38vh] sm:h-[52vh] md:h-full block"
-                    src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51KBUJ55LWL._SX679_.jpg"
+                    src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81Jxbp7UTjL._SX679_.jpg"
                   />
                 </div>
                 <div className="mt-4 text-center md:text-left">
@@ -39,7 +39,7 @@ const Mugs = () => {
                 <img
                   alt="ecommerce"
                   className="object-cover object-top m-auto md:m-0 md:w-full h-[38vh] md:h-full block"
-                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51KBUJ55LWL._SX679_.jpg"
+                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81Jxbp7UTjL._SX679_.jpg"
                 />
               </a>
               <div className="mt-4">
@@ -57,7 +57,7 @@ const Mugs = () => {
                 <img
                   alt="ecommerce"
                   className="object-cover object-top m-auto md:m-0 md:w-full h-[38vh] md:h-full block"
-                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51KBUJ55LWL._SX679_.jpg"
+                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81Jxbp7UTjL._SX679_.jpg"
                 />
               </a>
               <div className="mt-4">
@@ -75,7 +75,7 @@ const Mugs = () => {
                 <img
                   alt="ecommerce"
                   className="object-cover object-center w-full h-full block"
-                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51KBUJ55LWL._SX679_.jpg"
+                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81Jxbp7UTjL._SX679_.jpg"
                 />
               </a>
               <div className="mt-4">
@@ -93,7 +93,7 @@ const Mugs = () => {
                 <img
                   alt="ecommerce"
                   className="object-cover object-center w-full h-full block"
-                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51KBUJ55LWL._SX679_.jpg"
+                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81Jxbp7UTjL._SX679_.jpg"
                 />
               </a>
               <div className="mt-4">
@@ -111,7 +111,7 @@ const Mugs = () => {
                 <img
                   alt="ecommerce"
                   className="object-cover object-center w-full h-full block"
-                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51KBUJ55LWL._SX679_.jpg"
+                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81Jxbp7UTjL._SX679_.jpg"
                 />
               </a>
               <div className="mt-4">
@@ -129,7 +129,7 @@ const Mugs = () => {
                 <img
                   alt="ecommerce"
                   className="object-cover object-center w-full h-full block"
-                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51KBUJ55LWL._SX679_.jpg"
+                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81Jxbp7UTjL._SX679_.jpg"
                 />
               </a>
               <div className="mt-4">
@@ -147,7 +147,7 @@ const Mugs = () => {
                 <img
                   alt="ecommerce"
                   className="object-cover object-center w-full h-full block"
-                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51KBUJ55LWL._SX679_.jpg"
+                  src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81Jxbp7UTjL._SX679_.jpg"
                 />
               </a>
               <div className="mt-4">
@@ -167,4 +167,4 @@ const Mugs = () => {
   );
 };
 
-export default Mugs;
+export default stickers;
