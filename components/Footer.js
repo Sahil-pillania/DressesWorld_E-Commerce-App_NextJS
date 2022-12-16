@@ -7,7 +7,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <>
-      <footer className="text-gray-600 body-font">
+      <footer className="text-gray-600 body-font bg-slate-300">
         <div className="container px-5 py-14 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
             <Link href={"/"} legacyBehavior>

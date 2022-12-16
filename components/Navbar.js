@@ -7,10 +7,15 @@ const Navbar = () => {
   return (
     <div className="flex flex-col md:flex-row md:justify-start items-center justify-between align-middle p-3 shadow-md bg-slate-300">
       <div className="logo font-medium">
-        <span className={styles.icon_name}>Dresses World</span>
+        <Link href={"/"}>
+          <span className={styles.icon_name}>Dresses World</span>
+        </Link>
       </div>
       <div className="nav mx-4">
         <ul className="flex space-x-4 items-center font-medium">
+          <Link href={"/"}>
+            <li>Home</li>
+          </Link>
           <Link href={"/tshirts"}>
             <li>Tshirts</li>
           </Link>
