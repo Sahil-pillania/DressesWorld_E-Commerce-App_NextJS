@@ -7,6 +7,7 @@ import {
   AiFillCloseCircle,
   AiOutlinePlusSquare,
   AiOutlineMinusSquare,
+  AiOutlineClear,
 } from "react-icons/ai";
 import { IoBagCheckOutline } from "react-icons/io5";
 
@@ -119,10 +120,16 @@ const Navbar = () => {
           </li>
         </ol>
         <hr />
-        <button class="flex mx-auto my-2  text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-800 transition-colors rounded text-sm">
-          <IoBagCheckOutline className="my-auto mx-1" />
-          Checkout
-        </button>
+        <div className="flex mx-auto">
+          <button className="flex mx-auto my-2  text-white bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-800 transition-colors rounded text-sm">
+            <IoBagCheckOutline className="my-auto mx-1" />
+            Checkout
+          </button>
+          <button className="flex mx-auto my-2  text-white bg-yellow-500 border-0 py-2 px-4 focus:outline-none hover:bg-yellow-600 transition-colors rounded text-sm">
+            <AiOutlineClear className="my-auto mx-1" />
+            Clear Cart
+          </button>
+        </div>
         <hr />
       </div>
     </div>
