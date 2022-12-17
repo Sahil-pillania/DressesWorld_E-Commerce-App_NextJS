@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 
-const Slug = () => {
+const Slug = ({ addToCart }) => {
   const router = useRouter();
   const { slug } = router.query;
   const [pin, setPin] = useState();
@@ -187,7 +187,19 @@ const Slug = () => {
                   <button className="flex mr-3 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded select-none">
                     Buy Now
                   </button>
-                  <button className="flex mr-auto text-white bg-yellow-500 border-0 py-2 px-4 focus:outline-none hover:bg-yellow-600 rounded select-none">
+                  <button
+                    onClick={() => {
+                      addToCart(
+                        slug,
+                        1,
+                        1599,
+                        "wear the tshirt(XL/Red) ",
+                        "XL",
+                        "Red"
+                      );
+                    }}
+                    className="flex mr-auto text-white bg-yellow-500 border-0 py-2 px-4 focus:outline-none hover:bg-yellow-600 rounded select-none"
+                  >
                     Add to Cart
                   </button>
                   <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 select-none">

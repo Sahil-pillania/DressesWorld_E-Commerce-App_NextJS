@@ -9,6 +9,9 @@ module.exports = {
       screens: {
         ssm: "460px",
       },
+      zIndex: {
+        1000: "1000",
+      },
     },
   },
   plugins: [],
