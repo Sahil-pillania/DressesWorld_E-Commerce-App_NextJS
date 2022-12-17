@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 const Slug = () => {
   const router = useRouter();
   const { slug } = router.query;
+  const [pin, setPin] = useState();
+  const [service, setService] = useState();
+
+  const onChangePin = (e) => {
+    setPin(e.target.value);
+  };
+
+  const checkService = async () => {
+    let pins = await fetch("http://localhost:3000/api/pincode");
+    let pinJson = await pins.json();
+    // console.log(pin, pinJson);
+
+    if (pinJson.includes(parseInt(pin))) {
+      setService(true);
+      //console.log("done");
+    } else {
+      setService(false);
+      //console.log("not done");
+    }
+  };
   return (
     <>
       <section className="text-gray-600 body-font overflow-hidden">
@@ -11,15 +31,15 @@ const Slug = () => {
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
-              className="lg:w-1/2 w-full lg:h-auto px-24 object-cover object-top rounded border border-gray-300 p-5"
+              className="lg:w-1/2 w-full lg:h-auto px-16 sm:px-24 object-cover object-top rounded border border-gray-300 p-5"
               src="https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/71dFMe8x5gL._UY879_.jpg"
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                BRAND NAME
+                t-shirts
               </h2>
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                The Catcher in the Rye
+                The super t-shirt (XL/Blue)
               </h1>
               <div className="flex mb-4">
                 <span className="flex items-center">
@@ -164,13 +184,13 @@ const Slug = () => {
                   ₹1599
                 </span>
                 <div className="my-3 flex">
-                  <button className="flex mr-3 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded">
+                  <button className="flex mr-3 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded select-none">
                     Buy Now
                   </button>
-                  <button className="flex mr-auto text-white bg-yellow-500 border-0 py-2 px-4 focus:outline-none hover:bg-yellow-600 rounded">
+                  <button className="flex mr-auto text-white bg-yellow-500 border-0 py-2 px-4 focus:outline-none hover:bg-yellow-600 rounded select-none">
                     Add to Cart
                   </button>
-                  <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                  <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4 select-none">
                     <svg
                       fill="currentColor"
                       strokeLinecap="round"
@@ -184,6 +204,34 @@ const Slug = () => {
                   </button>
                 </div>
               </div>
+              <hr className="bg-gray-400" />
+              <div className="pincode flex flex-wrap space-y-2 ssm:space-y-0 mt-6 space-x-2 text-sm">
+                <input
+                  type="text"
+                  onChange={onChangePin}
+                  name="pin"
+                  value={pin}
+                  className=" border-2 rounded border-gray-400 w-72 p-2"
+                  placeholder="Check availability of your area..."
+                />
+                <button
+                  onClick={checkService}
+                  className="flex mt-o mr-auto text-white bg-gray-500 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded select-none"
+                >
+                  Check Pincode
+                </button>
+              </div>
+              {service && service != null && (
+                <div className="text-green-400 text-sm mt-1 message">
+                  This pincode is Serviceable.
+                </div>
+              )}
+              {!service && service != null && (
+                <div className="text-red-400 text-sm mt-1 message">
+                  Sorry, We don&apos;t deliver to this pincode.
+                </div>
+              )}
+              {!service && service == null && <div className="message"></div>}
             </div>
           </div>
         </div>
