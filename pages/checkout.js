@@ -168,10 +168,12 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
         </ol>
         <hr />
         <div className="text-center font-bold select-none">
-          {" "}
           Subtotal : ₹ {subTotal}
         </div>
         <hr />
+        <button className="flex mx-auto my-2  text-white bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-800 transition-colors duration-500 rounded text-sm">
+          Pay Now
+        </button>
       </div>
     </div>
   );
