@@ -10,6 +10,7 @@ import {
   AiOutlineClear,
 } from "react-icons/ai";
 import { IoBagCheckOutline } from "react-icons/io5";
+import { VscAccount } from "react-icons/vsc";
 
 const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
   const ref = useRef();
@@ -53,12 +54,20 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
 
       <div
         onClick={toggleCart}
-        className="cart absolute top-2 right-4 md:mx-4 my-2 cursor-pointer hover:text-purple-400"
+        className="cart absolute top-2 right-14 md:mx-4 my-2 cursor-pointer hover:text-purple-400"
       >
-        <div>
+        <div className="flex space-x-2">
           <AiOutlineShoppingCart className="text-2xl sm:text-3xl" />
         </div>
       </div>
+      <div className="cart absolute top-2 right-4 md:mx-4 my-2 cursor-pointer hover:text-purple-400">
+        <Link href={"/login"}>
+          <div className="flex space-x-2">
+            <VscAccount className="text-xl sm:text-3xl" />
+          </div>
+        </Link>
+      </div>
+
       {/* // sidebar  */}
       <div
         ref={ref}
