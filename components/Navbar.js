@@ -34,19 +34,34 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       </div>
       <div className="nav mx-4">
         <ul className="flex space-x-4 items-center font-medium text-sm ssm:font-normal">
-          <Link href={"/"}>
+          <Link
+            href={"/"}
+            className="hover:text-purple-700 hover:font-bold transition-all ease-in duration-200"
+          >
             <li>Home</li>
           </Link>
-          <Link href={"/tshirts"}>
+          <Link
+            href={"/tshirts"}
+            className="hover:text-purple-700 hover:font-bold transition-all ease-in duration-200 "
+          >
             <li>Tshirts</li>
           </Link>
-          <Link href={"/hoodies"}>
+          <Link
+            href={"/hoodies"}
+            className="hover:text-purple-700 hover:font-bold transition-all ease-in duration-200"
+          >
             <li>Hoodies</li>
           </Link>
-          <Link href={"/mugs"}>
+          <Link
+            href={"/mugs"}
+            className="hover:text-purple-700 hover:font-bold transition-all ease-in duration-200"
+          >
             <li>Mugs</li>
           </Link>
-          <Link href={"/stickers"}>
+          <Link
+            href={"/stickers"}
+            className="hover:text-purple-700 hover:font-bold transition-all ease-in duration-200"
+          >
             <li>Stickers</li>
           </Link>
         </ul>
