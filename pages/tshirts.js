@@ -10,12 +10,12 @@ const Tshirts = ({ products }) => {
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 justify-center">
-            {products.map((item) => {
+            {Object.keys(products).map((item) => {
               return (
                 <Link
-                  key={item._id}
+                  key={products[item]._id}
                   passHref={true}
-                  href={`/product/${item.slug}`}
+                  href={`/product/${products[item].slug}`}
                   className="lg:w-1/5 md:w-1/3 p-4 w-full m-2 shadow-md"
                 >
                   <div className="flex flex-col ">
@@ -23,7 +23,7 @@ const Tshirts = ({ products }) => {
                       <img
                         alt="ecommerce"
                         className="object-cover object-top m-auto  md:w-full h-[38vh] sm:h-[52vh] md:h-full block"
-                        src={item.img}
+                        src={products[item].img}
                       />
                     </div>
                     <div className="mt-4 text-center md:text-left bottom-0 ">
@@ -31,11 +31,67 @@ const Tshirts = ({ products }) => {
                         T-shirts
                       </h3>
                       <h2 className="text-gray-900 title-font text-lg font-medium">
-                        {item.title}
+                        {products[item].title}
                       </h2>
-                      <p className="mt-1">{item.price}</p>
-                      <span className="mt-1">S, M, L, XL, XXL</span>
-                      {/* <span className="mt-1">₹1599</span> */}
+                      <p className="mt-1"> ₹{products[item].price}</p>
+                      <div className="mt-1 space-x-2">
+                        {products[item].size.includes("S") && (
+                          <span className="border px-1 border-gray-300">S</span>
+                        )}
+                        {products[item].size.includes("M") && (
+                          <span className="border px-1 border-gray-300">M</span>
+                        )}
+                        {products[item].size.includes("L") && (
+                          <span className="border px-1 border-gray-300">L</span>
+                        )}
+                        {products[item].size.includes("XL") && (
+                          <span className="border px-1 border-gray-300">
+                            XL
+                          </span>
+                        )}
+                        {products[item].size.includes("XXL") && (
+                          <span className="border px-1 border-gray-300">
+                            XXL
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-2 space-x-1 flex">
+                        {products[item].color.includes("Blue") && (
+                          <span>
+                            <button className="flex mt-o mr-auto text-white bg-blue-500 border-2  focus:outline-none hover:bg-blue-600 rounded-full w-6 h-6 select-none"></button>
+                          </span>
+                        )}
+                        {products[item].color.includes("Green") && (
+                          <span>
+                            <button className="flex mt-o mr-auto text-white bg-green-500 border-2  focus:outline-none hover:bg-green-600 rounded-full w-6 h-6 select-none"></button>
+                          </span>
+                        )}
+                        {products[item].color.includes("Red") && (
+                          <span>
+                            <button className="flex mt-o mr-auto text-white bg-red-500 border-2  focus:outline-none hover:bg-red-600 rounded-full w-6 h-6 select-none"></button>
+                          </span>
+                        )}
+                        {products[item].color.includes("Gray") && (
+                          <span>
+                            <button className="flex mt-o mr-auto text-white bg-gray-500 border-2  focus:outline-none hover:bg-gray-600 rounded-full w-6 h-6 select-none"></button>
+                          </span>
+                        )}
+                        {products[item].color.includes("Black") && (
+                          <span>
+                            <button className="flex mt-o mr-auto text-white bg-black-500 border-2  focus:outline-none hover:bg-black-600 rounded-full w-6 h-6 select-none"></button>
+                          </span>
+                        )}
+                        {products[item].color.includes("Yellow") && (
+                          <span>
+                            <button className="flex mt-o mr-auto text-white bg-yellow-500 border-2  focus:outline-none hover:bg-yellow-600 rounded-full w-6 h-6 select-none"></button>
+                          </span>
+                        )}
+                        {products[item].color.includes("White") && (
+                          <span>
+                            <button className="flex mt-o mr-auto text-white bg-white-500 border border-black focus:outline-none hover:bg-white-600 rounded-full w-6 h-6 select-none"></button>
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -56,9 +112,31 @@ export async function getServerSideProps(context) {
   }
   // Fetching products
   let products = await Product.find({ category: "tshirts" });
-
+  let tshirts = {};
+  for (let item of products) {
+    if (item.title in tshirts) {
+      if (
+        !tshirts[item.title].color.includes(item.color) &&
+        item.availableQty > 0
+      ) {
+        tshirts[item.title].color.push(item.color);
+      }
+      if (
+        !tshirts[item.title].size.includes(item.size) &&
+        item.availableQty > 0
+      ) {
+        tshirts[item.title].size.push(item.size);
+      }
+    } else {
+      tshirts[item.title] = JSON.parse(JSON.stringify(item));
+      if (item.availableQty > 0) {
+        tshirts[item.title].color = [item.color];
+        tshirts[item.title].size = [item.size];
+      }
+    }
+  }
   return {
-    props: { products: JSON.parse(JSON.stringify(products)) }, // will be passed to the page component as props
+    props: { products: JSON.parse(JSON.stringify(tshirts)) }, // will be passed to the page component as props
   };
 }
 
