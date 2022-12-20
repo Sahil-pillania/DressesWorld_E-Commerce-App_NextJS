@@ -54,16 +54,16 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
 
       <div
         onClick={toggleCart}
-        className="cart absolute top-2 right-14 md:mx-4 my-2 cursor-pointer hover:text-purple-400"
+        className="cart absolute top-2 right-14 md:mx-4 my-2 cursor-pointer "
       >
         <div className="flex space-x-2">
-          <AiOutlineShoppingCart className="text-2xl sm:text-3xl" />
+          <AiOutlineShoppingCart className="text-2xl sm:text-3xl hover:text-purple-900 hover:scale-95 transition-transform duration-300" />
         </div>
       </div>
-      <div className="cart absolute top-2 right-4 md:mx-4 my-2 cursor-pointer hover:text-purple-400">
+      <div className="cart absolute top-2 right-4 md:mx-4 my-2 cursor-pointer">
         <Link href={"/login"}>
           <div className="flex space-x-2">
-            <VscAccount className="text-xl sm:text-3xl" />
+            <VscAccount className="text-xl sm:text-3xl  hover:text-purple-900 hover:scale-95 transition-transform duration-300" />
           </div>
         </Link>
       </div>
