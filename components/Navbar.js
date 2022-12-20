@@ -86,7 +86,9 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
             return (
               <li key={k}>
                 <div className="item flex my-2">
-                  <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                  <div className="w-2/3 font-semibold">
+                    {cart[k].name}({cart[k].size}/{cart[k].variant})
+                  </div>
                   <div className="w-1/3 flex items-center justify-center">
                     <AiOutlineMinusSquare
                       onClick={() => {
@@ -96,7 +98,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                           cart[k].price,
                           cart[k].name,
                           cart[k].size,
-                          cart[k].varient
+                          cart[k].variant
                         );
                       }}
                       className="text-xl cursor-pointer hover:text-purple-500 hover:scale-105 transition-all"
@@ -110,7 +112,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
                           cart[k].price,
                           cart[k].name,
                           cart[k].size,
-                          cart[k].varient
+                          cart[k].variant
                         );
                       }}
                       className="text-xl cursor-pointer hover:text-purple-500 hover:scale-105 transition-all"
