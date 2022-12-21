@@ -3,6 +3,8 @@ import react, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/globals.css";
 import { useRouter } from "next/router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
@@ -48,14 +50,34 @@ function MyApp({ Component, pageProps }) {
 
     setCart(newCart);
     saveCart(newCart);
-    alert("Item added to Cart successfully.");
+
+    toast.success("🦄 Item added successfully 👍", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   // fully clearing the cart method
   const clearCart = () => {
     setCart({});
     saveCart({});
-    console.log("Cart has been cleared");
+    //console.log("Cart has been cleared");
+    toast.success("🦄 Cart has been cleared", {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   // Removing the element from cart method
