@@ -1,11 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 const Signup = () => {
+  const router = useRouter();
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(data);
+    let res = await fetch("http://localhost:3000/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    let response = await res.json();
+    console.log(response);
+    let output = response.output;
+    let type = response.type;
+    console.log(output, type);
+
+    if (type == "success") {
+      toast.success("User has been created successfully 👍 ", {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    if (type == "error") {
+      toast.error("Failed to signup. Try again ", {
+        position: "top-center",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+
+    setData({ name: "", email: "", password: "" });
+  };
+
   return (
     <div>
-      {" "}
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <ToastContainer
+          position="top-center"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="w-full max-w-md space-y-8">
           <div>
             <img
@@ -26,7 +91,7 @@ const Signup = () => {
               </Link>
             </p>
           </div>
-          <htmlForm className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" method="POST">
             <input type="hidden" name="remember" value="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -34,6 +99,10 @@ const Signup = () => {
                   Name
                 </label>
                 <input
+                  value={data.name}
+                  onChange={(e) => {
+                    setData({ ...data, [e.target.name]: e.target.value });
+                  }}
                   id="name"
                   name="name"
                   type="text"
@@ -48,6 +117,10 @@ const Signup = () => {
                   Email address
                 </label>
                 <input
+                  value={data.email}
+                  onChange={(e) => {
+                    setData({ ...data, [e.target.name]: e.target.value });
+                  }}
                   id="email-address"
                   name="email"
                   type="email"
@@ -62,6 +135,10 @@ const Signup = () => {
                   Password
                 </label>
                 <input
+                  value={data.password}
+                  onChange={(e) => {
+                    setData({ ...data, [e.target.name]: e.target.value });
+                  }}
                   id="password"
                   name="password"
                   type="password"
@@ -72,36 +149,11 @@ const Signup = () => {
                 />
               </div>
             </div>
-            {/* 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
-                  Remember me
-                </label>
-              </div>
-
-              <div className="text-sm">
-                <Link
-                  href={"/forgot"}
-                  className="font-medium text-purple-600 hover:text-purple-500"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
-            </div> */}
 
             <div>
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="group relative flex w-full justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -122,7 +174,7 @@ const Signup = () => {
                 Sign up
               </button>
             </div>
-          </htmlForm>
+          </form>
         </div>
       </div>
     </div>
