@@ -223,7 +223,7 @@ const Slug = ({ clearCart, addToCart, product, variants, buyNow }) => {
                           refreshVariants("Red", size);
                         }}
                         className={`border-2 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none ${
-                          color === "Red" ? '"border-black"' : "border-gray-400"
+                          color === "Red" ? "border-black" : "border-gray-400"
                         }`}
                       ></button>
                     )}
@@ -279,8 +279,10 @@ const Slug = ({ clearCart, addToCart, product, variants, buyNow }) => {
                         onClick={() => {
                           refreshVariants("Black", size);
                         }}
-                        className={`border-2  ml-1 bg-black-500 rounded-full w-6 h-6 focus:outline-none ${
-                          color === "Black" ? "border-black" : "border-gray-400"
+                        className={`border-2  ml-1 bg-black rounded-full w-6 h-6 focus:outline-none ${
+                          color === "Black"
+                            ? "border-gray-400"
+                            : "border-gray-400"
                         }`}
                       ></button>
                     )}
@@ -421,7 +423,10 @@ export async function getServerSideProps(context) {
   }
   // Fetching product using slug
   let product = await Product.findOne({ slug: context.query.slug });
-  let variants = await Product.find({ title: product.title });
+  let variants = await Product.find({
+    title: product.title,
+    category: product.category,
+  });
   let colorSizeSlug = {};
   for (let item of variants) {
     if (Object.keys(colorSizeSlug).includes(item.color)) {
