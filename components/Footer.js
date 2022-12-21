@@ -35,24 +35,24 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/tshirts"}>T-shirts</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/hoodies"}>Hoodies</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/mugs"}>Mugs</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/stickers"}>Stickers</Link>
-                  </a>
+                  </span>
                 </li>
               </nav>
             </div>
@@ -62,24 +62,24 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/tshirts"}>T-shirts</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/hoodies"}>Hoodies</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/mugs"}>Mugs</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/stickers"}>Stickers</Link>
-                  </a>
+                  </span>
                 </li>
               </nav>
             </div>
@@ -89,24 +89,24 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/tshirts"}>T-shirts</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/hoodies"}>Hoodies</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/mugs"}>Mugs</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/stickers"}>Stickers</Link>
-                  </a>
+                  </span>
                 </li>
               </nav>
             </div>
@@ -116,24 +116,24 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/tshirts"}>T-shirts</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/hoodies"}>Hoodies</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/mugs"}>Mugs</Link>
-                  </a>
+                  </span>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
+                  <span className="text-gray-600 hover:text-gray-800">
                     <Link href={"/stickers"}>Stickers</Link>
-                  </a>
+                  </span>
                 </li>
               </nav>
             </div>
