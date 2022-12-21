@@ -23,10 +23,10 @@ const Signup = () => {
       body: JSON.stringify(data),
     });
     let response = await res.json();
-    console.log(response);
+    //console.log(response);
     let output = response.output;
     let type = response.type;
-    console.log(output, type);
+    //console.log(output, type);
 
     if (type == "success") {
       toast.success("User has been created successfully 👍 ", {
