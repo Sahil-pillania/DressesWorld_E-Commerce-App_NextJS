@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import mongoose from "mongoose";
 import Product from "../../models/Product";
 
-const Slug = ({ addToCart, product, variants }) => {
+const Slug = ({ clearCart, addToCart, product, variants, buyNow }) => {
   console.log(variants);
   const router = useRouter();
   const { slug } = router.query;
@@ -31,6 +31,7 @@ const Slug = ({ addToCart, product, variants }) => {
   const [color, setColor] = useState(product.color);
   const [size, setSize] = useState(product.size);
 
+  // Refreshing the pages for toggling the color ans size matches
   const refreshVariants = (newColor, newSize) => {
     console.log(" new color and size are " + newColor, newSize);
     let url = `http://localhost:3000/product/${variants[newColor][newSize]["slug"]}`;
@@ -288,7 +289,19 @@ const Slug = ({ addToCart, product, variants }) => {
                   ₹1599
                 </span>
                 <div className="my-3 flex">
-                  <button className="flex mr-3 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded select-none">
+                  <button
+                    onClick={() => {
+                      buyNow(
+                        slug,
+                        1,
+                        product.price,
+                        product.title,
+                        size,
+                        color
+                      );
+                    }}
+                    className="flex mr-3 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded select-none"
+                  >
                     Buy Now
                   </button>
                   <button

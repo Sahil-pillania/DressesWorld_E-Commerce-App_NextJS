@@ -86,7 +86,7 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
       {/* // sidebar  */}
       <div
         ref={ref}
-        className={`sidebar absolute top-0 right-0 bg-purple-100 py-10 px-4 transition-transform transform {Object.keys(cart).length !==0 ? 'translate-x-0' : 'translate-x-full'}  duration-500 w-[320px] z-1000 h-[100vh] shadow-sm`}
+        className={`sidebar absolute overflow-y-scroll top-0 right-0 bg-purple-100 py-10 px-4 transition-transform transform {Object.keys(cart).length !==0 ? 'translate-x-0' : 'translate-x-full'}  duration-500 w-[320px] z-1000 h-[100vh] shadow-sm`}
       >
         <span onClick={toggleCart} className="absolute top-4 right-4">
           <AiFillCloseSquare className="text-2xl text-red-400 cursor-pointer hover:text-red-600 hover:scale-110 hover:rounded-full" />

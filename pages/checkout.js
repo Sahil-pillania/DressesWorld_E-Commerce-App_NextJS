@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
+import { IoBagCheckOutline } from "react-icons/io5";
 
 const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
   return (
@@ -131,7 +132,9 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             return (
               <li key={k}>
                 <div className="item flex my-2">
-                  <div className="w-2/3 font-semibold">{cart[k].name}</div>
+                  <div className="w-2/3 font-semibold">
+                    {cart[k].name}({cart[k].size}/{cart[k].variant})
+                  </div>
                   <div className="w-1/3 flex  items-center justify-center">
                     <AiOutlineMinusSquare
                       onClick={() => {
@@ -170,8 +173,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
         <div className="text-center font-bold select-none">
           Subtotal : ₹ {subTotal}
         </div>
-        <hr />
-        <button className="flex mx-auto my-2  text-white bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-800 transition-colors duration-500 rounded text-sm">
+      </div>
+      <div className="flex m-auto w-[80%] sm:w-[90%] z-1000">
+        <button className="flex  my-2  text-white bg-purple-500 border-0 py-2 px-3 focus:outline-none hover:bg-purple-800 transition-colors duration-500 rounded text-sm">
+          <IoBagCheckOutline className="my-auto mx-1" />
           Pay Now
         </button>
       </div>
