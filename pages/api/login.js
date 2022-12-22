@@ -1,12 +1,17 @@
 import User from "../../models/User";
 import connectDB from "../../middleware/mongo";
+var CryptoJS = require("crypto-js");
 
 const handler = async (req, res) => {
   if (req.method == "POST") {
     console.log(req.body);
     let user = await User.findOne({ email: req.body.email });
     if (user) {
-      if (req.body.email == user.email && req.body.password == user.password) {
+      // decrypting the password
+      var bytes = CryptoJS.AES.decrypt(user.password, "sahilpillania");
+      var userPassword = bytes.toString(CryptoJS.enc.Utf8);
+
+      if (req.body.email == user.email && req.body.password == userPassword) {
         res.status(200).json({
           output: "login successfully",
           email: user.email,
