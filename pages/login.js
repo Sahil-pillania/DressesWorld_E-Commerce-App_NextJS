@@ -27,6 +27,8 @@ const Login = () => {
     //console.log("type is ", type);
 
     if (type == "success") {
+      localStorage.setItem("token", response.token);
+
       toast.success("Login successfully 👍 ", {
         position: "top-center",
         autoClose: 1900,
@@ -37,6 +39,7 @@ const Login = () => {
         progress: undefined,
         theme: "light",
       });
+
       setTimeout(() => {
         Router.push("/");
       }, 2300);
