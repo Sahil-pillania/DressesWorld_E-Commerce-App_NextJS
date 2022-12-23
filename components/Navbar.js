@@ -122,7 +122,7 @@ const Navbar = ({
                   My Account
                 </li>
               </Link>
-              <Link href={"/order"}>
+              <Link href={"/orders"}>
                 <li className="hover:font-semibold border-black hover:border-b-2 py-1">
                   Orders
                 </li>
