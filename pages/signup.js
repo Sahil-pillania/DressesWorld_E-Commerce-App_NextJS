@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 
 const Signup = () => {
   const router = useRouter();
@@ -11,6 +11,11 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      Router.push("/");
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -92,7 +97,6 @@ const Signup = () => {
             </p>
           </div>
           <form className="mt-8 space-y-6" method="POST">
-            <input type="hidden" name="remember" value="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
                 <label htmlFor="name" className="sr-only">
@@ -153,6 +157,7 @@ const Signup = () => {
             <div>
               <button
                 type="submit"
+                disabled={!data.name || !data.email || !data.password}
                 onClick={handleSubmit}
                 className="group relative flex w-full justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
               >

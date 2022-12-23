@@ -108,7 +108,7 @@ const Navbar = ({
 
         {dropdown && (
           <div
-            className="absolute right-0 mt-2  w-44 bg-purple-300 py-3 px-8 rounded "
+            className="absolute right-0 mt-2  w-44 bg-purple-100 py-3 px-8 rounded shadow-lg"
             onMouseOver={() => {
               toggleDropdown("show");
             }}

@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { BsKey } from "react-icons/bs";
+import Router, { useRouter } from "next/router";
 
 const forgot = () => {
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      Router.push("/");
+    }
+  }, []);
+
   return (
     <div>
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -27,7 +34,6 @@ const forgot = () => {
             </p>
           </div>
           <htmlForm className="mt-8 space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" value="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
                 <label htmlFor="email-address" className="sr-only">
