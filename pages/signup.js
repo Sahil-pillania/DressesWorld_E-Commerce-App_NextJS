@@ -74,7 +74,7 @@ const Signup = () => {
         <div className="w-full max-w-md space-y-8">
           <div>
             <img
-              className="mx-auto h-24 w-auto rounded-full border-2 border-purple-400"
+              className="mx-auto h-24 w-auto rounded-full border-4 border-purple-400"
               src="/dressesWorld2.png"
               alt="Your Company"
             />

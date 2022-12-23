@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useRef } from "react";
@@ -12,8 +12,18 @@ import {
 import { IoBagCheckOutline } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
 
-const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
+const Navbar = ({
+  user,
+  cart,
+  addToCart,
+  removeFromCart,
+  clearCart,
+  subTotal,
+  logout,
+}) => {
   const ref = useRef();
+
+  const [dropdown, setDropdown] = useState(false);
 
   const toggleCart = () => {
     if (ref.current.classList.contains("translate-x-full")) {
@@ -25,14 +35,29 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
     }
   };
 
+  const toggleDropdown = (e) => {
+    let timer;
+
+    if (e == "show") {
+      //console.log("clearing the timer");
+      clearTimeout(timer);
+      setDropdown(true);
+    } else {
+      timer = setTimeout(() => {
+        //console.log("setting timer");
+        setDropdown(false);
+      }, 4000);
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row md:justify-start items-center justify-between align-middle p-3 shadow-md bg-purple-50 sticky top-0 z-1000">
-      <div className="logo font-medium">
+      <div className="logo font-medium mr-auto sm:mr-1">
         <Link href={"/"}>
           <span className={styles.icon_name}>Dresses World</span>
         </Link>
       </div>
-      <div className="nav mx-4">
+      <div className="nav mx-4 mt-2 sm:mt-0">
         <ul className="flex space-x-4 items-center font-medium text-sm ssm:font-normal">
           <Link
             href={"/"}
@@ -67,20 +92,69 @@ const Navbar = ({ cart, addToCart, removeFromCart, clearCart, subTotal }) => {
         </ul>
       </div>
 
+      <div className="cart absolute top-1 sm:top-2 right-14 md:mx-4 my-2 cursor-pointer">
+        {user.value && (
+          <VscAccount
+            onMouseOver={() => {
+              toggleDropdown("show");
+            }}
+            onMouseLeave={() => {
+              toggleDropdown("hide");
+            }}
+            className="text-xl sm:text-3xl mt-2 sm:mt-0  hover:text-purple-900 hover:scale-95 transition-transform duration-300"
+          />
+        )}
+        {/* // drop down menu  - abosolute position */}
+
+        {dropdown && (
+          <div
+            className="absolute right-0 mt-2  w-44 bg-purple-300 py-3 px-8 rounded "
+            onMouseOver={() => {
+              toggleDropdown("show");
+            }}
+            onMouseLeave={() => {
+              toggleDropdown("hide");
+            }}
+          >
+            <ul className="space-y-2">
+              <Link href={"/myaccount"}>
+                <li className="hover:font-semibold border-black hover:border-b-2 py-1">
+                  My Account
+                </li>
+              </Link>
+              <Link href={"/order"}>
+                <li className="hover:font-semibold border-black hover:border-b-2 py-1">
+                  Orders
+                </li>
+              </Link>
+
+              <li
+                onClick={logout}
+                className="hover:font-semibold border-red-700 hover:border-b-2 hover:text-red-500 py-1"
+              >
+                Logout
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {!user.value && (
+          <Link href={"/login"}>
+            <div className="flex space-x-2">
+              <button className="bg-purple-500 px-2 py-1 rounded-lg hover:bg-purple-700 hover:text-white">
+                Login
+              </button>
+            </div>
+          </Link>
+        )}
+      </div>
       <div
         onClick={toggleCart}
-        className="cart absolute top-2 right-14 md:mx-4 my-2 cursor-pointer "
+        className="cart absolute top-2 right-4 md:mx-4 my-2 cursor-pointer "
       >
         <div className="flex space-x-2">
           <AiOutlineShoppingCart className="text-2xl sm:text-3xl hover:text-purple-900 hover:scale-95 transition-transform duration-300" />
         </div>
-      </div>
-      <div className="cart absolute top-2 right-4 md:mx-4 my-2 cursor-pointer">
-        <Link href={"/login"}>
-          <div className="flex space-x-2">
-            <VscAccount className="text-xl sm:text-3xl  hover:text-purple-900 hover:scale-95 transition-transform duration-300" />
-          </div>
-        </Link>
       </div>
 
       {/* // sidebar  */}

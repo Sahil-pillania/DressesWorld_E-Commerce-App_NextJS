@@ -9,10 +9,12 @@ import "react-toastify/dist/ReactToastify.css";
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
+  const [user, setUser] = useState({ value: null });
+  const [key, setkey] = useState();
   const router = useRouter();
 
   useEffect(() => {
-    console.log("useEffect ");
+    //console.log("useEffect ");
 
     try {
       if (localStorage.getItem("cart")) {
@@ -25,7 +27,12 @@ function MyApp({ Component, pageProps }) {
       );
       localStorage.clear();
     }
-  }, []);
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUser({ value: token });
+      setkey(Math.random());
+    }
+  }, [router.query]);
 
   const saveCart = (myCart) => {
     localStorage.setItem("cart", JSON.stringify(myCart));
@@ -108,10 +115,19 @@ function MyApp({ Component, pageProps }) {
     router.push("/checkout");
   };
 
+  const logout = () => {
+    localStorage.removeItem("token");
+    setkey(Math.random());
+    setUser({ value: null });
+    router.push("/");
+  };
+
   return (
     <>
       <Navbar
-        key={subTotal}
+        logout={logout}
+        user={user}
+        key={key}
         cart={cart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
