@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { BsKey } from "react-icons/bs";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 
 const forgot = () => {
   useEffect(() => {
@@ -33,7 +33,7 @@ const forgot = () => {
               </Link>
             </p>
           </div>
-          <htmlForm className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" method="POST">
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
                 <label htmlFor="email-address" className="sr-only">
@@ -76,7 +76,7 @@ const forgot = () => {
                 Send OTP
               </button>
             </div>
-          </htmlForm>
+          </form>
         </div>
       </div>
     </div>
