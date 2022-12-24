@@ -1,11 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from "react-icons/ai";
 import { IoBagCheckOutline } from "react-icons/io5";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    pincode: "",
+    address: "",
+  });
+
+  const payNow = () => {
+    console.log(data, subTotal);
+    // alert(
+    //   "Your data is :" + JSON.stringify(data) + "Pay value is :" + subTotal
+    // );
+    toast.success(
+      "Your data is :" + JSON.stringify(data) + "Pay value is :" + subTotal,
+      {
+        position: "top-center",
+        autoClose: 3900,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      }
+    );
+    setData({
+      name: "",
+      email: "",
+      phone: "",
+      pincode: "",
+      address: "",
+    });
+  };
   return (
     <div className="container  w-[100%]  sm:w-[80%] m-auto p-4">
+      <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <h1 className="font-bold text-2xl my-8 text-center uppercase underline">
         Checkout
       </h1>
@@ -19,6 +67,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="text"
               id="name"
+              onChange={(e) => {
+                setData({ ...data, [e.target.name]: e.target.value });
+              }}
+              value={data.name}
               name="name"
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
@@ -33,6 +85,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="email"
               id="email"
+              onChange={(e) => {
+                setData({ ...data, [e.target.name]: e.target.value });
+              }}
+              value={data.email}
               name="email"
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
@@ -51,6 +107,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
               type="text"
               id="address"
               name="address"
+              onChange={(e) => {
+                setData({ ...data, [e.target.name]: e.target.value });
+              }}
+              value={data.address}
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             ></textarea>
           </div>
@@ -64,6 +124,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="number"
               id="phone"
+              onChange={(e) => {
+                setData({ ...data, [e.target.name]: e.target.value });
+              }}
+              value={data.phone}
               name="phone"
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
@@ -82,6 +146,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="number"
               id="pincode"
+              onChange={(e) => {
+                setData({ ...data, [e.target.name]: e.target.value });
+              }}
+              value={data.pincode}
               name="pincode"
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
@@ -97,6 +165,8 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="text"
               id="state"
+              // onChange={(e)=>{setData({...data, [e.target.name]:e.target.value})}}
+              // value={data.}
               name="state"
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
@@ -113,6 +183,8 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="text"
               id="city"
+              // onChange={(e)=>{setData({...data, [e.target.name]:e.target.value})}}
+              // value={data.}
               name="city"
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
@@ -175,9 +247,12 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
         </div>
       </div>
       <div className="flex m-auto w-[80%] sm:w-[90%] z-1000">
-        <button className="flex  my-2  text-white bg-purple-500 border-0 py-2 px-3 focus:outline-none hover:bg-purple-800 transition-colors duration-500 rounded text-sm">
-          <IoBagCheckOutline className="my-auto mx-1" />
-          Pay Now
+        <button
+          onClick={payNow}
+          className="flex  my-2  text-white bg-purple-500 border-0 py-2 px-3 focus:outline-none hover:bg-purple-800 transition-colors duration-500 rounded text-sm"
+        >
+          <IoBagCheckOutline className="my-auto mx-1 " />
+          <span className="font-bold mx-1">Pay</span> ₹{subTotal}
         </button>
       </div>
     </div>
