@@ -54,11 +54,10 @@ export default function Home() {
                     </svg>
                   </div>
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                    Shooting Stars
+                    T-shirts
                   </h2>
                   <p className="leading-relaxed text-base">
-                    Fingerstache flexitarian street art 8-bit waist co, subway
-                    tile poke farm.
+                    New fashionable tshirts are here.
                   </p>
                 </div>
               </div>
@@ -80,11 +79,10 @@ export default function Home() {
                     </svg>
                   </div>
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                    The Catalyzer
+                    Hoodies
                   </h2>
                   <p className="leading-relaxed text-base">
-                    Fingerstache flexitarian street art 8-bit waist co, subway
-                    tile poke farm.
+                    Latest trend hoodies specialiy designed for youth.
                   </p>
                 </div>
               </div>
@@ -105,11 +103,10 @@ export default function Home() {
                     </svg>
                   </div>
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                    Neptune
+                    Mugs
                   </h2>
                   <p className="leading-relaxed text-base">
-                    Fingerstache flexitarian street art 8-bit waist co, subway
-                    tile poke farm.
+                    New designed mugs that looks so charming and glossy.
                   </p>
                 </div>
               </div>
@@ -129,11 +126,11 @@ export default function Home() {
                     </svg>
                   </div>
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                    Melanchole
+                    Stickers
                   </h2>
                   <p className="leading-relaxed text-base">
-                    Fingerstache flexitarian street art 8-bit waist co, subway
-                    tile poke farm.
+                    Super stickers suitable for walls, cars, bikes and other
+                    places
                   </p>
                 </div>
               </div>
@@ -153,11 +150,10 @@ export default function Home() {
                     </svg>
                   </div>
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                    Bunker
+                    Shirts
                   </h2>
                   <p className="leading-relaxed text-base">
-                    Fingerstache flexitarian street art 8-bit waist co, subway
-                    tile poke farm.
+                    Latest design clothes are here
                   </p>
                 </div>
               </div>
@@ -177,12 +173,9 @@ export default function Home() {
                     </svg>
                   </div>
                   <h2 className="text-lg text-gray-900 font-medium title-font mb-2">
-                    Ramona Falls
+                    Other items
                   </h2>
-                  <p className="leading-relaxed text-base">
-                    Fingerstache flexitarian street art 8-bit waist co, subway
-                    tile poke farm.
-                  </p>
+                  <p className="leading-relaxed text-base">Expore more...</p>
                 </div>
               </div>
             </div>

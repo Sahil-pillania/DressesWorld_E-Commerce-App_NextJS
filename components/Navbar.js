@@ -162,7 +162,7 @@ const Navbar = ({
         ref={ref}
         className={`sidebar absolute overflow-y-scroll top-0 right-0 rounded-lg  bg-purple-100 py-10 px-4 transition-transform transform {Object.keys(cart).length !==0 ? 'translate-x-0' : 'translate-x-full'}  duration-500 w-[320px] z-1000 h-[100vh] shadow-sm`}
       >
-        <span onClick={toggleCart} className="absolute top-4 right-4">
+        <span onClick={toggleCart} className="absolute top-4 left-4">
           <AiFillCloseSquare className="text-2xl text-red-400 cursor-pointer hover:text-red-600 hover:scale-110 hover:rounded-full" />
         </span>
         <h2 className="font-bold text-center">Shopping Cart</h2>
