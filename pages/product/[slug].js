@@ -32,7 +32,7 @@ const Slug = ({ clearCart, addToCart, product, variants, buyNow }) => {
     });
     // console.log(pin, pinJson);
     setTimeout(() => {
-      if (pinJson.includes(parseInt(pin))) {
+      if (Object.keys(pinJson).includes(pin)) {
         setService(true);
         toast.success("🦄 Pincode is serviceable!", {
           position: "bottom-center",

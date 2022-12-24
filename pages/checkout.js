@@ -10,9 +10,31 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
     name: "",
     email: "",
     phone: "",
-    pincode: "",
+
     address: "",
   });
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [pincode, setPincode] = useState("");
+
+  const handlePincode = async (e) => {
+    setPincode(e.target.value);
+    if (e.target.value.length == 6) {
+      //console.log("calling");
+      let pins = await fetch("http://localhost:3000/api/pincode");
+      let pinJson = await pins.json();
+      console.log(e.target.value);
+      console.log(pinJson);
+      if (Object.keys(pinJson).includes(e.target.value)) {
+        //console.log("stateis :" + pinJson[e.target.value][1]);
+        setState(pinJson[e.target.value][1]);
+        setCity(pinJson[e.target.value][0]);
+      }
+    } else {
+      setState("");
+      setCity("");
+    }
+  };
 
   const payNow = () => {
     console.log(data, subTotal);
@@ -146,11 +168,9 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="number"
               id="pincode"
-              onChange={(e) => {
-                setData({ ...data, [e.target.name]: e.target.value });
-              }}
-              value={data.pincode}
               name="pincode"
+              value={pincode}
+              onChange={handlePincode}
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
             />
@@ -165,8 +185,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="text"
               id="state"
-              // onChange={(e)=>{setData({...data, [e.target.name]:e.target.value})}}
-              // value={data.}
+              onChange={(e) => {
+                setState(e.target.value);
+              }}
+              value={state}
               name="state"
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required
@@ -183,8 +205,10 @@ const Checkout = ({ cart, addToCart, removeFromCart, subTotal }) => {
             <input
               type="text"
               id="city"
-              // onChange={(e)=>{setData({...data, [e.target.name]:e.target.value})}}
-              // value={data.}
+              onChange={(e) => {
+                setCity({ ...data, [e.target.name]: e.target.value });
+              }}
+              value={city}
               name="city"
               className="w-full bg-white rounded border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               required

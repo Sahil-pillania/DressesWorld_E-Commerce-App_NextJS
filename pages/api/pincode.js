@@ -1,3 +1,8 @@
 export default function handler(req, res) {
-  res.status(200).json([126102, 234400, 123456, 987654]);
+  let pincodes = {
+    123456: ["Rohtak", "Haryana"],
+    126102: ["jind", "Haryana"],
+    110003: ["Delhi", "Delhi"],
+  };
+  res.status(200).json(pincodes);
 }
